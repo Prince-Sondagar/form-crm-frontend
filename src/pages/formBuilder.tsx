@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 const FormBuilder = () => {
-    const { addField, fields, reorderFields, clearForm } = useFormBuilder();
+    const { addField, fields, reorderFields, clearForm, formName } = useFormBuilder();
 
     const handleDrop = (event: DragEndEvent) => {
         const { over, active } = event;
@@ -35,6 +35,28 @@ const FormBuilder = () => {
         }
     };
 
+
+    const handleSaveForm = async () => {
+        const response = await fetch('http://localhost:5000/api/forms', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: formName,
+                fields,
+            }),
+        });
+
+        const data = await response.json();
+
+        console.log("data ====>", data)
+
+        if (data.status === 200) {
+            alert(`Form created! Share link: ${data.shareUrl}`);
+            clearForm();
+        }
+    };
+
+
     return (
         <DndContext onDragEnd={handleDrop}>
             <div className="flex gap-4">
@@ -49,6 +71,7 @@ const FormBuilder = () => {
                         <button
                             disabled={!fields.length}
                             className="bg-blue-500 disabled:bg-blue-300 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg cursor-pointer"
+                            onClick={handleSaveForm}
                         >
                             Create Form
                         </button>

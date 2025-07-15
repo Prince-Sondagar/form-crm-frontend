@@ -6,3 +6,16 @@ export interface BaseField {
     label: string;
     required: boolean;
 }
+
+
+export interface Field {
+  id: string;
+  type: string;
+  label: string;
+  required: boolean;
+}
+
+export interface FormType {
+  name: string;
+  fields: Field[];
+}

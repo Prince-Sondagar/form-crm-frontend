@@ -1,8 +1,9 @@
 
 import { Routes, Route } from "react-router";
-import FormBuilder from "../pages/FormBuilder";
 import Leads from "../pages/leads";
 import MainLayout from "../layout/main";
+import FormBuilder from "../pages/formBuilder";
+import PublicForm from "../pages/publicForm";
 
 const RoutesComponent = () => {
 
@@ -12,6 +13,7 @@ const RoutesComponent = () => {
                 <Route index element={<FormBuilder />} />
                 <Route path="/leads" element={<Leads />} />
             </Route>
+            <Route path="/forms/:formId" element={<PublicForm />} />
         </Routes>
     )
 }

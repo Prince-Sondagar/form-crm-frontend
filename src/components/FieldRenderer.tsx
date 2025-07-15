@@ -24,18 +24,18 @@ const FieldRenderer = ({ field }: Props) => {
                         return (
                             <input
                                 type={field.type === "phone" ? "tel" : field.type}
-                                className="p-2 border rounded w-full"
+                                className="p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder={`Enter ${field.label}`}
                             />
                         );
                     case "file":
-                        return <input type="file" className="p-2 border rounded w-full" />;
+                        return <input type="file" className="p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500" />;
                     case "address":
                         return (
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                                <input placeholder="Street" className="p-2 border rounded" />
-                                <input placeholder="City" className="p-2 border rounded" />
-                                <input placeholder="Postal Code" className="p-2 border rounded" />
+                                <input placeholder="Street" className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"  />
+                                <input placeholder="City" className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                <input placeholder="Postal Code" className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
                             </div>
                         );
                     default:
